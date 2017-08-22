@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ErrorMessage">
+        <attr name="em_type" format="integer">
+            <enum name="error" value="1" />
+            <enum name="message" value="2" />
+            <enum name="noInternet" value="3" />
+        </attr>
+
+        <attr name="visibility" format="enum">
+            <enum name="error" value="1" />
+            <enum name="message" value="2" />
+            <enum name="noInternet" value="3" />
+        </attr>
+
+        <attr name="em_message" format="string" />
+
+        <attr name="em_buttonVisibility" format="integer">
+            <enum name="visible" value="0" />
+            <enum name="gone" value="8" />
+        </attr>
+
+        <attr name="em_messageTextColor" format="color" />
+
+        <attr name="em_messageTextSize" format="dimension" />
+
+        <attr name="em_iconVisibility" format="integer">
+            <enum name="visible" value="0" />
+            <enum name="gone" value="8" />
+        </attr>
+        <attr name="em_iconSize" format="dimension" />
+
+    </declare-styleable>
+</resources>

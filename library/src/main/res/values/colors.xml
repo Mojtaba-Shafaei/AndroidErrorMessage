@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark">#DE000000</color>
+    <color name="red">#B71C1C</color>
+    <color name="blue">#0D47A1</color>
+    <color name="messageTextColor">#767676</color>
+</resources>
