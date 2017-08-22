@@ -7,7 +7,7 @@ A customizable Android library to display Error/Message.
 - MIN-SDK Version = 14
 
 ### **Install**
-[![](https://jitpack.io/v/Mojtaba-Shafaei/AndroidErrorMessage.svg)](https://jitpack.io/#Mojtaba-Shafaei/AndroidToggleButton)
+[![](https://jitpack.io/v/Mojtaba-Shafaei/AndroidErrorMessage.svg)](https://jitpack.io/#Mojtaba-Shafaei/AndroidErrorMessage)
 
 ### **Screenshots**
 
