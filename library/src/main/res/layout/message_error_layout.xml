@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA"
+    android:background="#00FFFFFF"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -11,8 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="-48dp"
+        android:background="#00FFFFFF"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingBottom="20dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
 
         <ImageView
             android:id="@+id/imageViewIcon"
@@ -20,14 +23,13 @@
             android:layout_height="@dimen/iconSize"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_done" />
+            android:src="@drawable/ic_sad" />
 
         <TextView
             android:id="@+id/textViewMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
             android:enabled="false"
             android:gravity="center_horizontal"
             android:text="@string/app_name"
@@ -39,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/selector1"
             android:clickable="true"
             android:elevation="2dp"

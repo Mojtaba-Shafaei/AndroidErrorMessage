@@ -4,13 +4,8 @@
         <attr name="em_type" format="integer">
             <enum name="error" value="1" />
             <enum name="message" value="2" />
-            <enum name="noInternet" value="3" />
-        </attr>
-
-        <attr name="visibility" format="enum">
-            <enum name="error" value="1" />
-            <enum name="message" value="2" />
-            <enum name="noInternet" value="3" />
+            <enum name="no_internet" value="3" />
+            <enum name="no_data" value="3" />
         </attr>
 
         <attr name="em_message" format="string" />
@@ -29,6 +24,8 @@
             <enum name="gone" value="8" />
         </attr>
         <attr name="em_iconSize" format="dimension" />
+        <attr name="em_icon" format="reference" />
+        <attr name="em_iconTintColor" format="color" />
 
     </declare-styleable>
 </resources>

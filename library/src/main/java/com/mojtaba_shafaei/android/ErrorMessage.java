@@ -1,11 +1,16 @@
 package com.mojtaba_shafaei.android;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.ImageViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -31,10 +36,11 @@ public class ErrorMessage extends LinearLayout {
     public static final int ERROR = 1;
     public static final int MESSAGE = 2;
     public static final int NO_INTERNET = 3;
+    public static final int NO_DATA = 4;
 
     @Retention(RetentionPolicy.SOURCE)
     @Documented
-    @IntDef({ERROR, MESSAGE, NO_INTERNET})
+    @IntDef({ERROR, MESSAGE, NO_INTERNET, NO_DATA})
     public @interface ErrorMessageTypeEnum {
     }
 
@@ -96,20 +102,33 @@ public class ErrorMessage extends LinearLayout {
                 0, 0);
 
         try {
-
             int typ = a.getInteger(R.styleable.ErrorMessage_em_type, ERROR);
             initWithType(typ);
 
-            String messageString = a.getString(R.styleable.ErrorMessage_em_message);
-            setMessage(messageString);
+            if (a.hasValue(R.styleable.ErrorMessage_em_icon)) {
+                Drawable iconRes = a.getDrawable(R.styleable.ErrorMessage_em_icon);
+                icon.setImageDrawable(iconRes);
+            }
+
+            if (a.hasValue(R.styleable.ErrorMessage_em_iconTintColor)) {
+                ColorStateList iconColorTint = a.getColorStateList(R.styleable.ErrorMessage_em_iconTintColor);
+                setIconTint(iconColorTint);
+            }
+
+            if (a.hasValue(R.styleable.ErrorMessage_em_message)) {
+                String messageString = a.getString(R.styleable.ErrorMessage_em_message);
+                setMessage(messageString);
+            }
 
             @ColorInt int colorInt = a.getColor(R.styleable.ErrorMessage_em_messageTextColor
                     , getResources().getColor(R.color.messageTextColor));
 
             setMessageTextColor(colorInt);
 
-            final int textSize = a.getDimensionPixelSize(R.styleable.ErrorMessage_em_messageTextSize, getResources().getDimensionPixelSize(R.dimen.textSize));
-            message.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+            if (a.hasValue(R.styleable.ErrorMessage_em_messageTextSize)) {
+                final int textSize = a.getDimensionPixelSize(R.styleable.ErrorMessage_em_messageTextSize, getResources().getDimensionPixelSize(R.dimen.textSize));
+                message.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+            }
 
             setButtonVisibility(a.getInt(R.styleable.ErrorMessage_em_buttonVisibility, View.GONE));
             setIconVisibility(a.getInt(R.styleable.ErrorMessage_em_iconVisibility, View.VISIBLE));
@@ -137,6 +156,11 @@ public class ErrorMessage extends LinearLayout {
                 icon.setImageResource(R.drawable.ic_internet_off);
                 message.setText(R.string.no_internet_connection);
                 break;
+
+            case NO_DATA:
+                icon.setImageResource(R.drawable.ic_sad);
+                message.setText("no data found");
+                break;
         }
     }
 
@@ -163,11 +187,19 @@ public class ErrorMessage extends LinearLayout {
         message.setTextColor(colorInt);
     }
 
+    public void setMessageTextColorRes(@ColorRes int colorRes) {
+        message.setTextColor(ContextCompat.getColor(getContext(), colorRes));
+    }
+
     public void setButtonVisibility(int visibility) {
         button.setVisibility(visibility);
     }
 
     public void setOnClickListenerForButton(OnClickListener l) {
         clickListener = l;
+    }
+
+    public void setIconTint(ColorStateList iconColorTint) {
+        ImageViewCompat.setImageTintList(icon, iconColorTint);
     }
 }

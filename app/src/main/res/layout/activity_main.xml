@@ -70,12 +70,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:background="#E0E0E0"
         android:visibility="gone"
         app:em_buttonVisibility="visible"
-        app:em_iconSize="64dp"
+        app:em_icon="@drawable/ic_account_balance_black_24dp"
+        app:em_iconTintColor="@color/red"
         app:em_iconVisibility="visible"
-        app:em_message="This is a message."
+        app:em_message="Mauris blandit aliquet elit"
         app:em_messageTextColor="@color/messageTextColor"
         app:em_messageTextSize="@dimen/textSize"
-        app:em_type="message" />
+        app:em_type="no_data" />
 </FrameLayout>

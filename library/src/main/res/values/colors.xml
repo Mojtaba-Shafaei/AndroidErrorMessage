@@ -4,4 +4,6 @@
     <color name="red">#B71C1C</color>
     <color name="blue">#0D47A1</color>
     <color name="messageTextColor">#767676</color>
+
+    <color name="transparent">#00FFFFFF</color>
 </resources>
