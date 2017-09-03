@@ -76,7 +76,7 @@
         app:em_icon="@drawable/ic_account_balance_black_24dp"
         app:em_iconTintColor="@color/red"
         app:em_iconVisibility="visible"
-        app:em_message="Mauris blandit aliquet elit"
+        app:em_message="Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Nulla quis lorem ut libero malesuada feugiat."
         app:em_messageTextColor="@color/messageTextColor"
         app:em_messageTextSize="@dimen/textSize"
         app:em_type="no_data" />

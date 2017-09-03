@@ -10,6 +10,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ImageViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -193,6 +194,9 @@ public class ErrorMessage extends LinearLayout {
 
     public void setButtonVisibility(int visibility) {
         button.setVisibility(visibility);
+        if (visibility == View.VISIBLE) {
+            ViewCompat.setElevation(button, getContext().getResources().getDimensionPixelSize(R.dimen.shadowSize));
+        }
     }
 
     public void setOnClickListenerForButton(OnClickListener l) {

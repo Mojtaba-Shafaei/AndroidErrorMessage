@@ -5,7 +5,7 @@
             <enum name="error" value="1" />
             <enum name="message" value="2" />
             <enum name="no_internet" value="3" />
-            <enum name="no_data" value="3" />
+            <enum name="no_data" value="4" />
         </attr>
 
         <attr name="em_message" format="string" />
