@@ -143,7 +143,7 @@ public class ErrorMessage extends LinearLayout {
         }
     }
 
-    private void initWithType(int typ) {
+    public void initWithType(@ErrorMessageTypeEnum int typ) {
         switch (typ) {
             case ERROR:
                 icon.setImageResource(R.drawable.ic_error);
