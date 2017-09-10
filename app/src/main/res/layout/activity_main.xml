@@ -80,4 +80,13 @@
         app:em_messageTextColor="@color/messageTextColor"
         app:em_messageTextSize="@dimen/textSize"
         app:em_type="no_data" />
+
+    <com.mojtaba_shafaei.android.ErrorMessage
+        android:id="@+id/errorMessage2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#FAFAFA"
+        android:visibility="gone"
+        app:em_buttonVisibility="gone" />
 </FrameLayout>
