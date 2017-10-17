@@ -22,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mojtaba_shafaei.androidErrorMessage.R;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -103,7 +105,7 @@ public class ErrorMessage extends LinearLayout {
                 0, 0);
 
         try {
-            int typ = a.getInteger(R.styleable.ErrorMessage_em_type, ERROR);
+            @ErrorMessageTypeEnum int typ = a.getInteger(R.styleable.ErrorMessage_em_type, ERROR);
             initWithType(typ);
 
             if (a.hasValue(R.styleable.ErrorMessage_em_icon)) {
