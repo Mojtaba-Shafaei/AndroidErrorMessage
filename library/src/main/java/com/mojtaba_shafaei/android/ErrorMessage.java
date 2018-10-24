@@ -70,6 +70,10 @@ public ErrorMessage showMessage(CharSequence message){
 }
 
 public ErrorMessage showMessage(CharSequence message, Runnable runnable){
+  return showMessage(message, null, runnable);
+}
+
+public ErrorMessage showMessage(CharSequence message, CharSequence btnActionTitle, Runnable runnable){
   setVisibility(VISIBLE);
   mProgressBar.hide();
   mIcon.setVisibility(GONE);
@@ -81,17 +85,23 @@ public ErrorMessage showMessage(CharSequence message, Runnable runnable){
     mButton.setVisibility(VISIBLE);
     mButton.setOnClickListener(v -> runnable.run());
   }
-
+  if(btnActionTitle != null && btnActionTitle.length() > 0){
+    mButton.setText(btnActionTitle);
+  }
   mMessage.setText(message);
 
   return this;
 }
 
 public ErrorMessage showError(CharSequence error){
-  return showError(error, null);
+  return showError(error, null, null);
 }
 
 public ErrorMessage showError(CharSequence error, Runnable runnable){
+  return showError(error, null, runnable);
+}
+
+public ErrorMessage showError(CharSequence error, CharSequence btnActionTitle, Runnable runnable){
   setVisibility(VISIBLE);
 
   mProgressBar.hide();
@@ -104,6 +114,9 @@ public ErrorMessage showError(CharSequence error, Runnable runnable){
     mButton.setOnClickListener(v -> runnable.run());
   }
 
+  if(btnActionTitle != null && btnActionTitle.length() > 0){
+    mButton.setText(btnActionTitle);
+  }
   mIcon.setImageDrawable(VectorDrawableCompat.create(getResources()
       , R.drawable.ic_error
       , null)
