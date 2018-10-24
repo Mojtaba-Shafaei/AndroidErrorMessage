@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Library</string>
-    <string name="retry" translatable="false">تلاش مجدد</string>
-    <string name="no_internet_connection" translatable="false">ارتباط با اینترنت قطع میباشد</string>
-    <string name="profileIsInPrivate" translatable="false">این پروفایل خصوصی است</string>
-    <string name="iReadIt" translatable="false">متوجه شدم</string>
+  <string name="app_name">Library</string>
+  <string name="retry" translatable="false">تلاش مجدد</string>
+  <string name="no_internet_connection" translatable="false">مشکلی در اتصال اینترنت بوجود آمده است</string>
+  <string name="iGotIt" translatable="false">متوجه شدم</string>
+  <string name="no_data">مقادیری برای نمایش وجود ندارد</string>
 </resources>

@@ -1,46 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00FFFFFF"
-    android:clickable="true"
-    android:focusable="true"
-    android:gravity="center"
-    android:orientation="vertical">
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="#EEEEEE"
+  android:clickable="true"
+  android:focusable="true">
 
-    <ImageView
-        android:id="@+id/imageViewIcon"
-        android:layout_width="@dimen/iconSize"
-        android:layout_height="@dimen/iconSize"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="-128dp"
-        android:src="@drawable/ic_sad" />
+  <LinearLayout
+    android:id="@+id/error_group"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:visibility="visible">
+    <android.support.v7.widget.AppCompatImageView
+      android:id="@+id/iv_icon"
+      android:layout_width="61dp"
+      android:layout_height="64dp"
+      tools:src="@drawable/ic_internet_off"
+      />
 
-    <TextView
-        android:id="@+id/textViewMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:enabled="false"
-        android:gravity="center_horizontal"
-        android:paddingEnd="64dp"
-        android:paddingStart="64dp"
-        android:text="@string/app_name"
-        android:textColor="@color/messageTextColor"
-        android:textSize="@dimen/textSize" />
+    <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/tv_error"
+      style="@style/TextAppearance.AppCompat.Small"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingLeft="@dimen/activity_horizontal_margin"
+      android:paddingRight="@dimen/activity_horizontal_margin"
+      android:gravity="center"
+      android:textSize="@dimen/textSize"
+      tools:text="@tools:sample/lorem"
+      />
+    <android.support.design.button.MaterialButton
+      android:id="@+id/btn_action"
+      android:layout_width="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_height="wrap_content"
+      android:text="@string/retry"
+      />
+  </LinearLayout>
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/selector1"
-        android:minWidth="88dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:text="@string/retry"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/textSize"
-        android:visibility="gone" />
-</LinearLayout>
+  <android.support.v4.widget.ContentLoadingProgressBar
+    android:id="@+id/progressBar"
+    style="@style/Widget.AppCompat.ProgressBar"
+    android:layout_width="@dimen/iconSize"
+    android:layout_height="@dimen/iconSize"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_gravity="center"
+    android:indeterminate="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

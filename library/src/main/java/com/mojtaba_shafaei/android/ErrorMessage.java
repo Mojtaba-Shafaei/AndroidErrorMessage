@@ -1,219 +1,191 @@
 package com.mojtaba_shafaei.android;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.IntDef;
-import android.support.annotation.StringRes;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.ImageViewCompat;
+import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.button.MaterialButton;
+import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.widget.ContentLoadingProgressBar;
+import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.mojtaba_shafaei.androidErrorMessage.R;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
-public class ErrorMessage extends LinearLayout {
+public class ErrorMessage extends ConstraintLayout{
 
-  private final String TAG = "ErrorMessageLibrary";
-  private ImageView icon;
-  private TextView message;
-  private Button button;
+private final transient String TAG = "ErrorMessage";
+private AppCompatImageView mIcon;
+private AppCompatTextView mMessage;
+private MaterialButton mButton;
+private ContentLoadingProgressBar mProgressBar;
 
-  private OnClickListener clickListener;
+public ErrorMessage(Context context){
+  this(context, null);
+}
 
-  public static final int ERROR = 1;
-  public static final int MESSAGE = 2;
-  public static final int NO_INTERNET = 3;
-  public static final int NO_DATA = 4;
+public ErrorMessage(Context context, AttributeSet attrs){
+  this(context, attrs, 0);
+}
 
-  @Retention(RetentionPolicy.SOURCE)
-  @Documented
-  @IntDef({ERROR, MESSAGE, NO_INTERNET, NO_DATA})
-  public @interface ErrorMessageTypeEnum {
+public ErrorMessage(Context context, AttributeSet attrs, int defStyleAttr){
+  super(context, attrs, defStyleAttr);
+  init(context);
+}
 
+private void init(Context context){
+  if(isInEditMode()){
+    return;
   }
 
-  public ErrorMessage(Context context) {
-    super(context);
-    init(context);
-  }
-
-  public ErrorMessage(Context context, AttributeSet attrs) {
-    super(context, attrs);
-    init(context);
-    readAttrs(context, attrs);
-  }
-
-  public ErrorMessage(Context context, AttributeSet attrs, int defStyleAttr) {
-    super(context, attrs, defStyleAttr);
-    init(context);
-    readAttrs(context, attrs);
-  }
-
-  private void init(Context context) {
-    if (isInEditMode()) {
-      return;
+  View root = inflate(context, R.layout.message_error_layout, this);
+  root.setClickable(true);
+  root.setFocusable(true);
+  /*root.setOnTouchListener(new OnTouchListener(){
+    @Override
+    public boolean onTouch(View v, MotionEvent event){
+      return true;
     }
+  });
+*/
+  mIcon = findViewById(R.id.iv_icon);
+  mMessage = findViewById(R.id.tv_error);
+  mButton = findViewById(R.id.btn_action);
+  mProgressBar = findViewById(R.id.progressBar);
 
-    View root = inflate(context, R.layout.message_error_layout, this);
-    root.setClickable(true);
+}
 
-    root.setOnTouchListener(new OnTouchListener() {
-      @Override
-      public boolean onTouch(View v, MotionEvent event) {
-        return true;
-      }
-    });
-
-    icon = findViewById(R.id.imageViewIcon);
-    message = findViewById(R.id.textViewMessage);
-    button = findViewById(R.id.btn);
-
-    button.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        if (clickListener != null) {
-          clickListener.onClick(view);
-        }
-      }
-    });
+public ErrorMessage setTypeface(Typeface typeface){
+  if(typeface != null){
+    mMessage.setTypeface(typeface);
+    mButton.setTypeface(typeface);
   }
 
-  public void setMessageTypeface(Typeface typeface) {
-    message.setTypeface(typeface);
-    button.setTypeface(typeface);
+  return this;
+}
+
+public ErrorMessage showMessage(CharSequence message){
+  return showMessage(message, null);
+}
+
+public ErrorMessage showMessage(CharSequence message, Runnable runnable){
+  setVisibility(VISIBLE);
+  mProgressBar.hide();
+  mIcon.setVisibility(GONE);
+  mMessage.setVisibility(VISIBLE);
+
+  if(runnable == null){
+    mButton.setVisibility(GONE);
+  } else{
+    mButton.setVisibility(VISIBLE);
+    mButton.setOnClickListener(v -> runnable.run());
   }
 
-  private void readAttrs(Context context, AttributeSet attrs) {
-    TypedArray a = context.getTheme().obtainStyledAttributes(
-        attrs,
-        R.styleable.ErrorMessage,
-        0, 0);
+  mMessage.setText(message);
 
-    try {
-      @ErrorMessageTypeEnum int typ = a.getInteger(R.styleable.ErrorMessage_em_type, ERROR);
-      initWithType(typ);
+  return this;
+}
 
-      if (a.hasValue(R.styleable.ErrorMessage_em_icon)) {
-        Drawable iconRes = a.getDrawable(R.styleable.ErrorMessage_em_icon);
-        icon.setImageDrawable(iconRes);
-      }
+public ErrorMessage showError(CharSequence error){
+  return showError(error, null);
+}
 
-      if (a.hasValue(R.styleable.ErrorMessage_em_iconTintColor)) {
-        ColorStateList iconColorTint = a
-            .getColorStateList(R.styleable.ErrorMessage_em_iconTintColor);
-        setIconTint(iconColorTint);
-      }
+public ErrorMessage showError(CharSequence error, Runnable runnable){
+  setVisibility(VISIBLE);
 
-      if (a.hasValue(R.styleable.ErrorMessage_em_message)) {
-        String messageString = a.getString(R.styleable.ErrorMessage_em_message);
-        setMessage(messageString);
-      }
-
-      @ColorInt int colorInt = a.getColor(R.styleable.ErrorMessage_em_messageTextColor
-          , getResources().getColor(R.color.messageTextColor));
-
-      setMessageTextColor(colorInt);
-
-      if (a.hasValue(R.styleable.ErrorMessage_em_messageTextSize)) {
-        final int textSize = a.getDimensionPixelSize(R.styleable.ErrorMessage_em_messageTextSize,
-            getResources().getDimensionPixelSize(R.dimen.textSize));
-        message.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-      }
-
-      setButtonVisibility(a.getInt(R.styleable.ErrorMessage_em_buttonVisibility, View.GONE));
-      setIconVisibility(a.getInt(R.styleable.ErrorMessage_em_iconVisibility, View.VISIBLE));
-
-      setIconSize(a.getDimensionPixelSize(R.styleable.ErrorMessage_em_iconSize,
-          getResources().getDimensionPixelSize(R.dimen.iconSize)));
-
-    } catch (Exception e) {
-      Log.e(TAG, "readAttrs: " + e.getMessage());
-    } finally {
-      a.recycle();
-    }
+  mProgressBar.hide();
+  mIcon.setVisibility(VISIBLE);
+  mMessage.setVisibility(VISIBLE);
+  if(runnable == null){
+    mButton.setVisibility(GONE);
+  } else{
+    mButton.setVisibility(VISIBLE);
+    mButton.setOnClickListener(v -> runnable.run());
   }
 
-  public void initWithType(@ErrorMessageTypeEnum int typ) {
-    switch (typ) {
-      case ERROR:
-        icon.setImageResource(R.drawable.ic_error);
-        break;
+  mIcon.setImageDrawable(VectorDrawableCompat.create(getResources()
+      , R.drawable.ic_error
+      , null)
+  );
 
-      case MESSAGE:
-        icon.setImageResource(R.drawable.ic_done);
-        break;
+  mMessage.setText(error);
 
-      case NO_INTERNET:
-        icon.setImageResource(R.drawable.ic_internet_off);
-        message.setText(R.string.no_internet_connection);
-        break;
+  return this;
+}
 
-      case NO_DATA:
-        icon.setImageResource(R.drawable.ic_sad);
-        message.setText("no data found");
-        break;
-    }
+public ErrorMessage showInternetError(){
+  return showInternetError(null);
+}
+
+/**
+ * @param actionOfButton The action that runs if user click on retryButton.<br/> if {@code null} passed, so retry button will be hidden.
+ */
+public ErrorMessage showInternetError(@Nullable Runnable actionOfButton){
+  setVisibility(VISIBLE);
+
+  mProgressBar.hide();
+  mIcon.setVisibility(VISIBLE);
+  mMessage.setVisibility(VISIBLE);
+
+  final VectorDrawableCompat drawableCompat = VectorDrawableCompat.create(getResources()
+      , R.drawable.ic_internet_off
+      , null);
+
+  if(drawableCompat != null){
+    mIcon.setImageDrawable(drawableCompat.getCurrent());
   }
 
-  public void setIconVisibility(int visibility) {
-    icon.setVisibility(visibility);
+  mMessage.setText(R.string.no_internet_connection);
+  if(actionOfButton == null){
+    mButton.setVisibility(GONE);
+  } else{
+    mButton.setVisibility(VISIBLE);
+    mButton.setOnClickListener(v -> actionOfButton.run());
   }
 
-  public void setIconSize(int dimensionPixelSize) {
-    LayoutParams layoutParams = (LayoutParams) icon.getLayoutParams();
-    layoutParams.width = dimensionPixelSize;
-    layoutParams.height = dimensionPixelSize;
-    icon.setLayoutParams(layoutParams);
+  return this;
+}
+
+public ErrorMessage showNoData(){
+  return showNoData(null);
+}
+
+public ErrorMessage showNoData(@Nullable Runnable actionOfButton){
+  setVisibility(VISIBLE);
+
+  mProgressBar.hide();
+  mIcon.setVisibility(VISIBLE);
+  mMessage.setVisibility(VISIBLE);
+
+  mIcon.setImageDrawable(VectorDrawableCompat.create(getResources()
+      , R.drawable.ic_sentiment_dissatisfied_red_a100_24dp
+      , null)
+  );
+
+  mMessage.setText(R.string.no_data);
+  if(actionOfButton == null){
+    mButton.setVisibility(GONE);
+  } else{
+    mButton.setVisibility(VISIBLE);
+    mButton.setOnClickListener(v -> actionOfButton.run());
   }
 
-  public void setMessage(String messageString) {
-    message.setText(messageString);
-  }
+  return this;
+}
 
-  public void setMessage(@StringRes int messageRes) {
-    message.setText(messageRes);
-  }
+public ErrorMessage showLoading(){
+  setVisibility(VISIBLE);
 
-  public void setMessageTextColor(@ColorInt int colorInt) {
-    message.setTextColor(colorInt);
-  }
+  mProgressBar.show();
+  mIcon.setVisibility(GONE);
+  mMessage.setVisibility(GONE);
+  mButton.setVisibility(GONE);
 
-  public void setMessageTextColorRes(@ColorRes int colorRes) {
-    message.setTextColor(ContextCompat.getColor(getContext(), colorRes));
-  }
+  return this;
+}
 
-  public void setButtonVisibility(int visibility) {
-    button.setVisibility(visibility);
-    if (visibility == View.VISIBLE) {
-      ViewCompat.setElevation(button,
-          getContext().getResources().getDimensionPixelSize(R.dimen.shadowSize));
-    }
-  }
-
-  public void setOnClickListenerForButton(OnClickListener l) {
-    clickListener = l;
-  }
-
-  public void setIconTint(ColorStateList iconColorTint) {
-    ImageViewCompat.setImageTintList(icon, iconColorTint);
-  }
-
-  public void setButtonText(String buttonText) {
-    button.setText(buttonText);
-  }
+public void hide(){
+  setVisibility(GONE);
+}
 }
