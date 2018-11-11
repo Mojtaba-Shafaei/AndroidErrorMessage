@@ -3,6 +3,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
+  android:id="@+id/root"
   android:layout_height="match_parent">
 
   <android.support.design.widget.AppBarLayout
@@ -63,11 +64,27 @@
       android:layout_marginTop="16dp"
       android:text="Show Error"/>
 
+    <Button
+      android:id="@+id/btnShowLoading"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Show Loading"/>
+
+    <Button
+      android:id="@+id/btnShowListLoading"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Show List Loading"/>
+
   </LinearLayout>
 
   <com.mojtaba_shafaei.android.ErrorMessage
     android:id="@+id/errorMessage"
     android:layout_width="match_parent"
+    android:layout_marginTop="56dp"
+    android:background="#FFFFFFA0"
     android:layout_height="match_parent"
     android:layout_gravity="center"/>
 

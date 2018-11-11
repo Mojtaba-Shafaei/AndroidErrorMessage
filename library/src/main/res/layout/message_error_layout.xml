@@ -4,7 +4,6 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="#EEEEEE"
   android:clickable="true"
   android:focusable="true">
 
@@ -23,7 +22,7 @@
     tools:visibility="visible">
     <android.support.v7.widget.AppCompatImageView
       android:id="@+id/iv_icon"
-      android:layout_width="61dp"
+      android:layout_width="64dp"
       android:layout_height="64dp"
       tools:src="@drawable/ic_internet_off"
       />
@@ -42,24 +41,23 @@
     <android.support.design.button.MaterialButton
       android:id="@+id/btn_action"
       android:layout_width="wrap_content"
-      android:layout_marginTop="8dp"
       android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
       android:text="@string/retry"
       />
   </LinearLayout>
 
-  <android.support.v4.widget.ContentLoadingProgressBar
+  <com.airbnb.lottie.LottieAnimationView
     android:id="@+id/progressBar"
-    style="@style/Widget.AppCompat.ProgressBar"
-    android:layout_width="@dimen/iconSize"
-    android:layout_height="@dimen/iconSize"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_gravity="center"
-    android:indeterminate="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent"
+    app:lottie_autoPlay="true"
+    app:lottie_loop="true"
+    app:lottie_rawRes="@raw/loading_dots"
+    app:lottie_scale="2.0"/>
 
 </android.support.constraint.ConstraintLayout>
