@@ -1,15 +1,16 @@
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
+  android:id="@+id/l_constraint"
   android:layout_height="match_parent"
   android:clickable="true"
   android:focusable="true">
 
   <LinearLayout
     android:id="@+id/error_group"
-    android:layout_width="wrap_content"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
@@ -20,26 +21,25 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:visibility="visible">
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/iv_icon"
-      android:layout_width="64dp"
-      android:layout_height="64dp"
+      android:layout_width="@dimen/iconSize"
+      android:layout_height="@dimen/iconSize"
       tools:src="@drawable/ic_internet_off"
       />
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_error"
-      style="@style/TextAppearance.AppCompat.Small"
+      style="@style/TextAppearance.MaterialComponents.Body1"
+      android:textColor="@color/messageTextColor"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:paddingLeft="@dimen/activity_horizontal_margin"
-      android:paddingRight="@dimen/activity_horizontal_margin"
       android:gravity="center"
-      android:textSize="@dimen/textSize"
       tools:text="@tools:sample/lorem"
       />
-    <android.support.design.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
       android:id="@+id/btn_action"
+      style="@style/Widget.MaterialComponents.Button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
@@ -49,15 +49,13 @@
 
   <com.airbnb.lottie.LottieAnimationView
     android:id="@+id/progressBar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/wh_loading"
+    android:layout_height="@dimen/wh_loading"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:lottie_autoPlay="true"
-    app:lottie_loop="true"
-    app:lottie_rawRes="@raw/loading_dots"
-    app:lottie_scale="2.0"/>
+    app:lottie_loop="true"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

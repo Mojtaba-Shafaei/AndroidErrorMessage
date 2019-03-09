@@ -1,36 +1,32 @@
-# **Android Error/Message**
+# Android Error/Message/Loading
 
-A customizable Android library to display Error/Message.
+A customizable Android library to display Error/Message/Loading.
 
-### **Requirements**
+### Requirements
 
 - MIN-SDK Version = 14
 
-### **Install**
-[![](https://jitpack.io/v/Mojtaba-Shafaei/AndroidErrorMessage.svg)](https://jitpack.io/#Mojtaba-Shafaei/AndroidErrorMessage)
+### Screenshots
+![sample AndroidToolbarBadgeButton image](https://github.com/Mojtaba-Shafaei/AndroidErrorMessage/blob/master/screenshots/screen01.gif)
 
-### **Screenshots**
+### Methods 
+- `setTypeface(typeface: Typeface?)`    // set `Typeface` of error `TextView` and `Button`
+- `showMessage(...)`                    // show suitable UI for a message
+- `showError(...)`                      // show suitable UI for an error
+- `showInternetError(...)`              // show suitable UI for an Internet not found error
+- `showNoData(...)`                     // show suitable UI for Data Not Available
+- `showLoading(...)`                    // show suitable UI initializing loading
+- `showListLoading(...)`                // show suitable UI for initializing a list
+- `hide(...)`                           // hide the library
 
-### **Sample code**
-
+### XML
 ```xml
     <com.mojtaba_shafaei.android.ErrorMessage
-        android:id="@+id/errorMessage"
+        android:id="@+id/em"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:em_buttonVisibility="visible"
-        app:em_iconSize="64dp"
-        app:em_iconVisibility="visible"
-        app:em_message="This is a message."
-        app:em_messageTextColor="@color/messageTextColor"
-        app:em_messageTextSize="@dimen/textSize"
-        app:em_type="message" />
+        android:layout_height="match_parent"/>
 
 ```
-## **Developer**
 
-* **Mojtaba Shafaei** [Email](mjtb.shafaei@gmail.com)
-
-## **License**
-This project is licensed under the MIT License
+### **Install**
+[![](https://jitpack.io/v/Mojtaba-Shafaei/AndroidErrorMessage.svg)](https://jitpack.io/#Mojtaba-Shafaei/AndroidErrorMessage)

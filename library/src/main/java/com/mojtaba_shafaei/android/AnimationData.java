@@ -1,8 +1,8 @@
 package com.mojtaba_shafaei.android;
 
-import android.support.annotation.RawRes;
+import androidx.annotation.RawRes;
 
-public class AnimationData{
+class AnimationData{
 
 @RawRes
 int resId;
@@ -10,7 +10,7 @@ float scale;
 float speed;
 Integer tintColor;
 
-public AnimationData(@RawRes int resId, float scale, float speed, Integer tintColor){
+AnimationData(@RawRes int resId, float scale, float speed, Integer tintColor){
   this.resId = resId;
   this.scale = scale;
   this.speed = speed;

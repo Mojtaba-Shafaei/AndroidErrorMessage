@@ -1,56 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
   android:id="@+id/root"
-  android:layout_height="match_parent">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.mojtaba_shafaei.android.MainActivity">
 
-  <android.support.design.widget.AppBarLayout
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize">
-
-    <android.support.v7.widget.Toolbar
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:contentInsetEnd="0dp"
-      app:contentInsetLeft="0dp"
-      app:contentInsetRight="0dp"
-      app:contentInsetStart="0dp">
-
-      <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageButton
-          android:id="@+id/btn_menu_more"
-          android:layout_width="48dp"
-          android:layout_height="48dp"
-          android:layout_alignParentRight="true"
-          android:layout_centerVertical="true"
-          android:background="@android:drawable/list_selector_background"
-          android:src="@android:drawable/ic_menu_more"/>
-
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="16dp"
-          android:layout_alignParentLeft="true"
-          android:layout_centerVertical="true"
-          android:text="@string/app_name"
-          android:textColor="@android:color/white"
-          android:textSize="16sp"/>
-      </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
-  </android.support.design.widget.AppBarLayout>
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/btn_close"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+    android:text="@string/hide_library"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
 
   <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context="com.mojtaba_shafaei.android.MainActivity">
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/btn_close">
 
     <TextView
       android:layout_width="match_parent"
@@ -58,11 +33,25 @@
       android:text="@string/dummyText"/>
 
     <Button
+      android:id="@+id/btnShowInternetError"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Show Internet Error"/>
+
+    <Button
       android:id="@+id/btnShowError"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:text="Show Error"/>
+
+    <Button
+      android:id="@+id/btnShowNoDataError"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Show No Data Error"/>
 
     <Button
       android:id="@+id/btnShowLoading"
@@ -81,11 +70,17 @@
   </LinearLayout>
 
   <com.mojtaba_shafaei.android.ErrorMessage
-    android:id="@+id/errorMessage"
-    android:layout_width="match_parent"
-    android:layout_marginTop="56dp"
-    android:background="#FFFFFFA0"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"/>
+    android:id="@+id/em"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="#DDD"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/btn_close"/>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">Library</string>
+  <string name="retry">تلاش مجدد</string>
+  <string name="no_internet_connection">مشکلی در اتصال اینترنت بوجود آمده است</string>
+  <string name="iGotIt">متوجه شدم</string>
+  <string name="no_data">مقادیری برای نمایش وجود ندارد</string>
+</resources>
