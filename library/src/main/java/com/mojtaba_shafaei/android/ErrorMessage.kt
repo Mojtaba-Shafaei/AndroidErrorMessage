@@ -86,14 +86,13 @@ class ErrorMessage : ConstraintLayout {
     progressBar.visibility = View.GONE
   }
 
-  @JvmOverloads
   fun showError(
       message: CharSequence,
       @ColorInt messageTextColor: Int = transparent_black_percent_60,
       actionTitle: CharSequence = "تلاش مجدد",
       @DrawableRes actionIcon: Int = R.drawable.ic_refresh_light_blue_500_24dp,
       @ColorInt actionTextColor: Int = light_blue_500,
-      runnable: Runnable? = null
+      action: Runnable? = null
   ): ErrorMessage {
     visibility = View.VISIBLE
 
@@ -101,13 +100,13 @@ class ErrorMessage : ConstraintLayout {
     iv_icon.visibility = View.VISIBLE
     tv_error.visibility = View.VISIBLE
 
-    when (runnable) {
+    when (action) {
       null -> {
         btn_action.visibility = View.GONE
       }
       else -> {
         btn_action.visibility = View.VISIBLE
-        btn_action.setOnClickListener { runnable.run() }
+        btn_action.setOnClickListener { action.run() }
       }
     }
 
