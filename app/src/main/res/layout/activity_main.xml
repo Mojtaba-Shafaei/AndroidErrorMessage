@@ -61,6 +61,13 @@
       android:text="Show Loading"/>
 
     <Button
+      android:id="@+id/btnShowMessage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Show Message"/>
+
+    <Button
       android:id="@+id/btnShowListLoading"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

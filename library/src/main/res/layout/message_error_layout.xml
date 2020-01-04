@@ -1,9 +1,8 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
   android:id="@+id/l_constraint"
+  android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:clickable="true"
   android:focusable="true">
@@ -25,26 +24,27 @@
       android:id="@+id/iv_icon"
       android:layout_width="@dimen/iconSize"
       android:layout_height="@dimen/iconSize"
-      tools:src="@drawable/ic_internet_off"
-      />
+      tools:src="@drawable/ic_internet_off" />
 
     <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_error"
       style="@style/TextAppearance.MaterialComponents.Body1"
-      android:textColor="@color/messageTextColor"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:gravity="center"
-      tools:text="@tools:sample/lorem"
-      />
+      android:textColor="@color/transparent_black_percent_38"
+      tools:text="@tools:sample/lorem" />
     <com.google.android.material.button.MaterialButton
       android:id="@+id/btn_action"
-      style="@style/Widget.MaterialComponents.Button"
+      style="@style/Widget.MaterialComponents.Button.OutlinedButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
+      android:drawablePadding="16dp"
       android:text="@string/retry"
-      />
+      android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+      android:textColor="#03A9F4"
+      tools:drawableRight="@drawable/ic_refresh_light_blue_500_24dp" />
   </LinearLayout>
 
   <com.airbnb.lottie.LottieAnimationView
@@ -56,6 +56,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:lottie_autoPlay="true"
-    app:lottie_loop="true"/>
+    app:lottie_loop="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

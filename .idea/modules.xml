@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidErrorMessage.iml" filepath="$PROJECT_DIR$/AndroidErrorMessage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/AndroidErrorMessage-app.iml" filepath="$PROJECT_DIR$/app/AndroidErrorMessage-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/AndroidErrorMessage-library.iml" filepath="$PROJECT_DIR$/library/AndroidErrorMessage-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android projects-AndroidErrorMessage.iml" filepath="$PROJECT_DIR$/android projects-AndroidErrorMessage.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
