@@ -89,6 +89,7 @@ class ErrorMessage : ConstraintLayout {
   fun showError(
       message: CharSequence,
       @ColorInt messageTextColor: Int = transparent_black_percent_60,
+      @DrawableRes mainIcon: Int = R.drawable.ic_error,
       actionTitle: CharSequence = "تلاش مجدد",
       @DrawableRes actionIcon: Int = R.drawable.ic_refresh_light_blue_500_24dp,
       @ColorInt actionTextColor: Int = light_blue_500,
@@ -114,7 +115,7 @@ class ErrorMessage : ConstraintLayout {
       btn_action.text = actionTitle
     }
 
-    val drawableCompat = ContextCompat.getDrawable(context, R.drawable.ic_error)
+    val drawableCompat = ContextCompat.getDrawable(context, mainIcon)
     if (drawableCompat != null) {
       iv_icon.setImageDrawable(drawableCompat)
     }
@@ -132,6 +133,7 @@ class ErrorMessage : ConstraintLayout {
   fun showInternetError(
       message: CharSequence = "مشکلی در اتصال اینترنت بوجود آمده است",
       @ColorInt messageTextColor: Int = transparent_black_percent_60,
+      @DrawableRes mainIcon: Int = R.drawable.ic_internet_off,
       actionTitle: CharSequence = "تلاش مجدد",
       @DrawableRes actionIcon: Int = R.drawable.ic_refresh_light_blue_500_24dp,
       @ColorInt actionTextColor: Int = light_blue_500,
@@ -152,7 +154,7 @@ class ErrorMessage : ConstraintLayout {
       }
     }
 
-    val drawableCompat = ContextCompat.getDrawable(context, R.drawable.ic_internet_off)
+    val drawableCompat = ContextCompat.getDrawable(context, mainIcon)
     if (drawableCompat != null) {
       iv_icon.setImageDrawable(drawableCompat)
     }
@@ -170,6 +172,7 @@ class ErrorMessage : ConstraintLayout {
   fun showNoData(
       message: String = "مقادیری برای نمایش وجود ندارد",
       @ColorInt messageTextColor: Int = error_text_color,
+      @DrawableRes mainIcon: Int = R.drawable.ic_sentiment_neutral_red_a100_128dp,
       actionTitle: CharSequence = "تلاش مجدد",
       @DrawableRes actionIcon: Int = R.drawable.ic_refresh_light_blue_500_24dp,
       @ColorInt actionTextColor: Int = light_blue_500,
@@ -191,7 +194,7 @@ class ErrorMessage : ConstraintLayout {
       }
     }
 
-    val drawableCompat = ContextCompat.getDrawable(context, R.drawable.ic_sentiment_neutral_red_a100_128dp)
+    val drawableCompat = ContextCompat.getDrawable(context, mainIcon)
     if (drawableCompat != null) {
       iv_icon.setImageDrawable(drawableCompat)
     }
@@ -283,5 +286,9 @@ class ErrorMessage : ConstraintLayout {
       hideProgressBar()
     }
     super.setVisibility(visibility)
+  }
+
+  fun getActionButton(): View {
+    return btn_action
   }
 }
