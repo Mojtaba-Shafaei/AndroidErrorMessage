@@ -9,13 +9,12 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    btn_close.setOnClickListener { em.hide() }
+    btn_close.setOnClickListener { em.state = ErrorMessage.State.hidden() }
 
-    btnShowInternetError.setOnClickListener { em.showInternetError(action = Runnable { Log.d("TAG", "action fired") }) }
-    btnShowError.setOnClickListener { em.showError(getString(R.string.error_String)) }
-    btnShowNoDataError.setOnClickListener { em.showNoData() }
-    btnShowLoading.setOnClickListener { em.showLoading() }
-    btnShowMessage.setOnClickListener { em.showMessage(message = "این یک پیغام تستی است", action = Runnable { finish() }) }
-    btnShowListLoading.setOnClickListener { em.showListLoading() }
+    btnShowInternetError.setOnClickListener { em.state = ErrorMessage.State.internetError { Log.e("TAG", "internet error fired") } }
+    btnShowError.setOnClickListener { em.state = ErrorMessage.State.error(message = getString(R.string.error_String)).copy(messageTextColor = 0xFFFF0000.toInt()) }
+    btnShowNoDataError.setOnClickListener { em.state = ErrorMessage.State.noData() }
+    btnShowLoading.setOnClickListener { em.state = ErrorMessage.State.loading() }
+    btnShowMessage.setOnClickListener { em.state = ErrorMessage.State.message(message = "این یک پیغام تستی است", action = { Log.d("TAG", "action Message fired") }) }
   }
 }
