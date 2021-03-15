@@ -97,17 +97,15 @@ class ErrorMessage : ConstraintLayout {
     root.isClickable = true
     root.isFocusable = true
   }
-
-  @kotlin.Deprecated(message = "Please set typeface directly with equal")
-  fun setTypeface(typeface: Typeface): ErrorMessage {
+ 
+  private fun setTypeface(typeface: Typeface): ErrorMessage {
     tv_error.typeface = typeface
     btn_action.typeface = typeface
 
     return this
   }
-
-  @kotlin.Deprecated(message = "Use set state")
-  fun showMessage(
+ 
+  private fun showMessage(
       message: CharSequence,
       @ColorInt messageTextColor: Int = transparent_black_percent_60,
       @DrawableRes mainIcon: Int = 0,
@@ -145,9 +143,8 @@ class ErrorMessage : ConstraintLayout {
     progressBar.pauseAnimation()
     progressBar.visibility = View.GONE
   }
-
-  @kotlin.Deprecated(message = "Use set state")
-  fun showError(
+ 
+  private fun showError(
       message: CharSequence,
       @ColorInt messageTextColor: Int = transparent_black_percent_60,
       @DrawableRes mainIcon: Int = R.drawable.ic_error,
@@ -189,8 +186,8 @@ class ErrorMessage : ConstraintLayout {
     return this
   }
 
-  @kotlin.Deprecated(message = "Use set state")
-  fun showInternetError(
+  
+  private fun showInternetError(
       message: CharSequence = "مشکلی در اتصال اینترنت بوجود آمده است",
       @ColorInt messageTextColor: Int = transparent_black_percent_60,
       @DrawableRes mainIcon: Int = R.drawable.ic_internet_off,
@@ -228,9 +225,8 @@ class ErrorMessage : ConstraintLayout {
 
     return this
   }
-
-  @kotlin.Deprecated(message = "Use set state")
-  fun showNoData(
+ 
+  private fun showNoData(
       message: String = "مقادیری برای نمایش وجود ندارد",
       @ColorInt messageTextColor: Int = error_text_color,
       @DrawableRes mainIcon: Int = R.drawable.ic_sentiment_neutral_red_a100_128dp,
@@ -270,8 +266,8 @@ class ErrorMessage : ConstraintLayout {
     return this
   }
 
-  @kotlin.Deprecated(message = "Use SetState(...) method. This method will remove in the next release")
-  fun showLoading(animationData: AnimationData = AnimationData(R.raw.loading, 1.0f, 0.85f, null)): ErrorMessage {
+  
+  private fun showLoading(animationData: AnimationData = AnimationData(R.raw.loading, 1.0f, 0.85f, null)): ErrorMessage {
     visibility = View.VISIBLE
     progressBar.speed = animationData.speed
     progressBar.scale = animationData.scale
@@ -304,8 +300,8 @@ class ErrorMessage : ConstraintLayout {
     return this
   }
 
-  @kotlin.Deprecated(message = "Use set state")
-  fun showListLoading(animationData: AnimationData = AnimationData(R.raw.skeleton_frame_loading, 12.0f, .8f, 0x36000000)): ErrorMessage {
+  
+  private fun showListLoading(animationData: AnimationData = AnimationData(R.raw.skeleton_frame_loading, 12.0f, .8f, 0x36000000)): ErrorMessage {
     visibility = View.VISIBLE
     progressBar.speed = animationData.speed
     progressBar.scale = animationData.scale
@@ -338,13 +334,12 @@ class ErrorMessage : ConstraintLayout {
     return this
   }
 
-  @kotlin.Deprecated(message = "Use set state")
-  fun hide() {
+  
+  private fun hide() {
     hideProgressBar()
     visibility = View.GONE
   }
-
-  @Deprecated("Please Use any of show... methods instead of setVisibility(View.VISIBLE) and use hide() instead of setVisibility(GONE)", level = DeprecationLevel.WARNING)
+ 
   override fun setVisibility(visibility: Int) {
     if (visibility == View.GONE || visibility == View.INVISIBLE) {
       hideProgressBar()
