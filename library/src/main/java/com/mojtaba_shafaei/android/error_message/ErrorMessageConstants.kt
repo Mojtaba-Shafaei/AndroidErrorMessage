@@ -1,4 +1,4 @@
-package com.mojtaba_shafaei.android
+package com.mojtaba_shafaei.android.error_message
 
 const val transparent_black_percent_60 = 0xFF757575.toInt()
 const val transparent_black_percent_38 = 0x00BDBDBD.toInt()

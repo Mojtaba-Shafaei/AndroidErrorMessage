@@ -1,4 +1,4 @@
-package com.mojtaba_shafaei.android
+package com.mojtaba_shafaei.android.error_message
 
 import androidx.annotation.RawRes
 

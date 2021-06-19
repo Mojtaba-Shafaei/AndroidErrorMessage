@@ -1,4 +1,4 @@
-package com.mojtaba_shafaei.android
+package com.mojtaba_shafaei.android.error_message
 
 import android.content.Context
 import android.graphics.ColorFilter
@@ -16,7 +16,14 @@ import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
 import com.airbnb.lottie.value.LottieValueCallback
+import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.ERROR
+import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.HIDDEN
+import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.INTERNET_ERROR
+import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.LOADING
+import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.MESSAGE
+import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.NO_DATA
 import com.mojtaba_shafaei.androidErrorMessage.R
+import com.mojtaba_shafaei.androidErrorMessage.R.raw
 import com.mojtaba_shafaei.androidErrorMessage.databinding.MessageErrorLayoutBinding
 
 class ErrorMessage : ConstraintLayout {
@@ -39,12 +46,12 @@ class ErrorMessage : ConstraintLayout {
   private fun refresh(state: State) {
 
     when (state.status) {
-      Status.LOADING -> showLoading(state)
-      Status.ERROR -> showError(state)
-      Status.INTERNET_ERROR -> showInternetError(state)
-      Status.NO_DATA -> showNoData(state)
-      Status.MESSAGE -> showMessage(state)
-      Status.HIDDEN -> hide()
+      LOADING -> showLoading(state)
+      ERROR -> showError(state)
+      INTERNET_ERROR -> showInternetError(state)
+      NO_DATA -> showNoData(state)
+      MESSAGE -> showMessage(state)
+      HIDDEN -> hide()
     }
   }
 
@@ -218,7 +225,7 @@ class ErrorMessage : ConstraintLayout {
 
   private fun showLoading(state: State): ErrorMessage {
     visibility = View.VISIBLE
-    val animationData: AnimationData = state.animationData ?: AnimationData(R.raw.loading, 1.0f, 0.85f, null)
+    val animationData: AnimationData = state.animationData ?: AnimationData(raw.loading, 1.0f, 0.85f, null)
     binding.progressBar.run {
       speed = animationData.speed
       scale = animationData.scale
@@ -252,7 +259,7 @@ class ErrorMessage : ConstraintLayout {
     return this
   }
 
-  private fun showListLoading(animationData: AnimationData = AnimationData(R.raw.skeleton_frame_loading, 12.0f, .8f, 0x36000000)): ErrorMessage {
+  private fun showListLoading(animationData: AnimationData = AnimationData(raw.skeleton_frame_loading, 12.0f, .8f, 0x36000000)): ErrorMessage {
     visibility = View.VISIBLE
     binding.progressBar.run {
       speed = animationData.speed
@@ -306,27 +313,27 @@ class ErrorMessage : ConstraintLayout {
   }
 
   data class State(
-    val status: Status,
-    val message: String? = null,
-    @ColorInt val messageTextColor: Int? = null,
-    val actionTitle: String? = null,
-    @DrawableRes val mainIcon: Int? = null,
-    @DrawableRes val actionIcon: Int? = null,
-    @ColorInt val actionTextColor: Int? = null,
-    val animationData: AnimationData? = null,
-    val action: ((v: View) -> Unit)? = null,
+          val status: Status,
+          val message: String? = null,
+          @ColorInt val messageTextColor: Int? = null,
+          val actionTitle: String? = null,
+          @DrawableRes val mainIcon: Int? = null,
+          @DrawableRes val actionIcon: Int? = null,
+          @ColorInt val actionTextColor: Int? = null,
+          val animationData: AnimationData? = null,
+          val action: ((v: View) -> Unit)? = null,
   ) {
 
     companion object {
-      fun loading(animationData: AnimationData = AnimationData(R.raw.loading, 12.0f, .8f, 0x36000000)): State {
+      fun loading(animationData: AnimationData = AnimationData(raw.loading, 12.0f, .8f, 0x36000000)): State {
         return State(
-          Status.LOADING,
+          LOADING,
           animationData = animationData,
         )
       }
 
       fun error(message: String? = null, actionTitle: String? = null, action: ((v: View) -> Unit)? = null): State = State(
-        status = Status.ERROR,
+        status = ERROR,
         message = message,
         actionTitle = actionTitle,
         action = action
@@ -337,25 +344,25 @@ class ErrorMessage : ConstraintLayout {
         actionTitle: String? = null,
         action: ((v: View) -> Unit)? = null,
       ): State = State(
-        status = Status.INTERNET_ERROR,
+        status = INTERNET_ERROR,
         message = message,
         actionTitle = actionTitle,
         action = action
       )
 
       fun hidden(): State = State(
-        status = Status.HIDDEN,
+        status = HIDDEN,
       )
 
       fun noData(message: String? = null, actionTitle: String? = null, action: ((v: View) -> Unit)? = null): State = State(
-        status = Status.NO_DATA,
+        status = NO_DATA,
         message = message,
         actionTitle = actionTitle,
         action = action
       )
 
       fun message(message: String, actionTitle: String? = null, action: ((v: View) -> Unit)? = null): State = State(
-        status = Status.MESSAGE,
+        status = MESSAGE,
         message = message,
         actionTitle = actionTitle,
         action = action
