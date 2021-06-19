@@ -1,7 +1,7 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/em_colorPrimary</item>
     <item name="colorPrimaryDark">@color/em_colorPrimaryDark</item>
@@ -9,7 +9,7 @@
     <item name="android:background">#EEE</item>
   </style>
 
-  <style name="AppTheme.DarkActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar">
+  <style name="AppTheme.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/em_colorPrimary</item>
     <item name="colorPrimaryDark">@color/em_colorPrimaryDark</item>
