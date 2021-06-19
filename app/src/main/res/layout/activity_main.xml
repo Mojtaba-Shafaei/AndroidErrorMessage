@@ -1,93 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/root"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context="com.mojtaba_shafaei.android.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mojtaba_shafaei.android.MainActivity">
 
-  <com.google.android.material.button.MaterialButton
-    android:id="@+id/btn_close"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/activity_horizontal_margin"
-    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-    android:text="@string/hide_library"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:text="@string/hide_library"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-  <LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:padding="16dp"
-    android:orientation="vertical"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/btn_close">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_close">
 
-    <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/dummyText"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummyText" />
 
-    <Button
-      android:id="@+id/btnShowInternetError"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Show Internet Error"/>
+        <Button
+            android:id="@+id/btnSimpleShowInternetError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show Internet Error" />
 
-    <Button
-      android:id="@+id/btnShowError"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Show Error"/>
+        <Button
+            android:id="@+id/btnShowInternetError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:tag="This is a custome error text!!!"
+            android:text="Show Internet Error 2" />
 
-    <Button
-      android:id="@+id/btnShowNoDataError"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Show No Data Error"/>
+        <Button
+            android:id="@+id/btnShowError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show Error" />
 
-    <Button
-      android:id="@+id/btnShowLoading"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Show Loading"/>
+        <Button
+            android:id="@+id/btnShowError2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show Error2" />
 
-    <Button
-      android:id="@+id/btnShowMessage"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Show Message"/>
+        <Button
+            android:id="@+id/btnShowNoDataError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show No Data Error" />
 
-    <Button
-      android:id="@+id/btnShowListLoading"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Show List Loading"/>
+        <Button
+            android:id="@+id/btnShowNoDataError2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show No Data Error2" />
 
-  </LinearLayout>
+        <Button
+            android:id="@+id/btnShowLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show Loading" />
 
-  <com.mojtaba_shafaei.android.ErrorMessage
-    android:id="@+id/em"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_gravity="center"
-    android:clickable="true"
-    android:focusable="true"
-    android:background="#DDD"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/btn_close"/>
+        <Button
+            android:id="@+id/btnShowMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show Message" />
+
+        <Button
+            android:id="@+id/btnShowListLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Show List Loading" />
+
+    </LinearLayout>
+
+    <com.mojtaba_shafaei.android.ErrorMessage
+        android:id="@+id/em"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:background="#DDD"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_close" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
