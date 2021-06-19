@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.mojtaba_shafaei.android.error_message.ErrorMessage.State
-import com.mojtaba_shafaei.sample.R
 import com.mojtaba_shafaei.sample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
