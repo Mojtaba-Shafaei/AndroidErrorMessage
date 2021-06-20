@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <dimen name="iconSize">128dp</dimen>
-  <dimen name="activity_horizontal_margin">64dp</dimen>
-  <dimen name="wh_loading">224dp</dimen>
+  <dimen name="em_iconSize">128dp</dimen>
+  <dimen name="em_activity_horizontal_margin">64dp</dimen>
+  <dimen name="em_wh_loading">224dp</dimen>
 </resources>

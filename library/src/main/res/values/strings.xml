@@ -1,7 +1,7 @@
 <resources>
-  <string name="app_name">Library</string>
-  <string name="retry">Retry</string>
-  <string name="no_internet_connection">Check Internet Connection</string>
-  <string name="iGotIt">I Got It</string>
-  <string name="no_data">No Data Available</string>
+  <string name="em_app_name">Library</string>
+  <string name="em_retry">Retry</string>
+  <string name="em_no_internet_connection">Check Internet Connection</string>
+  <string name="em_iGotIt">I Got It</string>
+  <string name="em_no_data">No Data Available</string>
 </resources>

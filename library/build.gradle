@@ -7,6 +7,7 @@ plugins {
 group = 'com.github.Mojtaba-Shafaei'
 
 android {
+    resourcePrefix = 'em_'
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 

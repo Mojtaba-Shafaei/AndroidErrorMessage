@@ -22,8 +22,8 @@
     tools:visibility="visible">
     <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/iv_icon"
-      android:layout_width="@dimen/iconSize"
-      android:layout_height="@dimen/iconSize"
+      android:layout_width="@dimen/em_iconSize"
+      android:layout_height="@dimen/em_iconSize"
       tools:src="@drawable/ic_internet_off" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -32,7 +32,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:gravity="center"
-      android:textColor="@color/transparent_black_percent_38"
+      android:textColor="@color/em_transparent_black_percent_38"
       tools:text="@tools:sample/lorem" />
     <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/btn_action"
@@ -43,7 +43,7 @@
       android:drawablePadding="8dp"
       android:paddingLeft="16dp"
       android:paddingRight="16dp"
-      android:text="@string/retry"
+      android:text="@string/em_retry"
       android:textAppearance="@style/TextAppearance.AppCompat.Button"
       android:textColor="#03A9F4"
       tools:drawableRight="@drawable/ic_refresh_light_blue_500_24dp" />
@@ -51,8 +51,8 @@
 
   <com.airbnb.lottie.LottieAnimationView
     android:id="@+id/progressBar"
-    android:layout_width="@dimen/wh_loading"
-    android:layout_height="@dimen/wh_loading"
+    android:layout_width="@dimen/em_wh_loading"
+    android:layout_height="@dimen/em_wh_loading"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

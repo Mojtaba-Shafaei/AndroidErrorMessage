@@ -22,12 +22,10 @@ import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.INTERNET_ER
 import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.LOADING
 import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.MESSAGE
 import com.mojtaba_shafaei.android.error_message.ErrorMessage.Status.NO_DATA
-import com.mojtaba_shafaei.androidErrorMessage.R
-import com.mojtaba_shafaei.androidErrorMessage.R.raw
-import com.mojtaba_shafaei.androidErrorMessage.databinding.MessageErrorLayoutBinding
+import com.mojtaba_shafaei.android.error_message.databinding.EmMessageErrorLayoutBinding
 
 class ErrorMessage : ConstraintLayout {
-  private var _binding: MessageErrorLayoutBinding? = null
+  private var _binding: EmMessageErrorLayoutBinding? = null
   private val binding get() = _binding!!
 
   var typeface: Typeface? = null
@@ -71,7 +69,7 @@ class ErrorMessage : ConstraintLayout {
     if (isInEditMode) {
       return
     }
-    _binding = MessageErrorLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+    _binding = EmMessageErrorLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     val root = binding.root
     root.isClickable = true
     root.isFocusable = true
@@ -103,7 +101,7 @@ class ErrorMessage : ConstraintLayout {
     binding.tvError.text = state.message
     binding.tvError.setTextColor(state.messageTextColor ?: transparent_black_percent_60)
 
-    binding.btnAction.text = state.actionTitle ?: context.getString(R.string.iGotIt)
+    binding.btnAction.text = state.actionTitle ?: context.getString(R.string.em_iGotIt)
     if(state.actionIcon != null)
       binding.btnAction.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(context, state.actionIcon), null)
     binding.btnAction.setTextColor(state.actionTextColor ?: light_blue_500)
@@ -131,7 +129,7 @@ class ErrorMessage : ConstraintLayout {
       }
     }
 
-    binding.btnAction.text = state.actionTitle ?: context.getString(R.string.retry)
+    binding.btnAction.text = state.actionTitle ?: context.getString(R.string.em_retry)
 
     val drawableCompat = ContextCompat.getDrawable(context, state.mainIcon ?: R.drawable.ic_error)
     if (drawableCompat != null) {
@@ -141,7 +139,7 @@ class ErrorMessage : ConstraintLayout {
     binding.tvError.text = state.message
     binding.tvError.setTextColor(state.messageTextColor ?: transparent_black_percent_60)
 
-    binding.btnAction.text = state.actionTitle ?: context.getString(R.string.retry)
+    binding.btnAction.text = state.actionTitle ?: context.getString(R.string.em_retry)
     binding.btnAction.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(context, state.actionIcon ?: R.drawable.ic_refresh_light_blue_500_24dp), null)
     binding.btnAction.setTextColor(state.actionTextColor ?: light_blue_500)
 
@@ -172,12 +170,12 @@ class ErrorMessage : ConstraintLayout {
     }
 
     binding.tvError.run {
-      text = state.message ?: context.getString(R.string.no_internet_connection)
+      text = state.message ?: context.getString(R.string.em_no_internet_connection)
       setTextColor(state.messageTextColor ?: transparent_black_percent_60)
     }
 
     binding.btnAction.run {
-      text = state.actionTitle ?: context.getString(R.string.retry)
+      text = state.actionTitle ?: context.getString(R.string.em_retry)
       setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(context, state.actionIcon ?: R.drawable.ic_refresh_light_blue_500_24dp), null)
       setTextColor(state.actionTextColor ?: light_blue_500)
     }
@@ -210,12 +208,12 @@ class ErrorMessage : ConstraintLayout {
     }
 
     binding.tvError.run {
-      text = state.message ?: context.getString(R.string.no_data)
+      text = state.message ?: context.getString(R.string.em_no_data)
       setTextColor(state.messageTextColor ?: error_text_color)
     }
 
     binding.btnAction.run {
-      text = state.actionTitle ?: context.getString(R.string.retry)
+      text = state.actionTitle ?: context.getString(R.string.em_retry)
       setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(context, state.actionIcon ?: R.drawable.ic_refresh_light_blue_500_24dp), null)
       setTextColor(state.actionTextColor ?: light_blue_500)
     }
@@ -225,7 +223,7 @@ class ErrorMessage : ConstraintLayout {
 
   private fun showLoading(state: State): ErrorMessage {
     visibility = View.VISIBLE
-    val animationData: AnimationData = state.animationData ?: AnimationData(raw.loading, 1.0f, 0.85f, null)
+    val animationData: AnimationData = state.animationData ?: AnimationData(R.raw.em_loading, 1.0f, 0.85f, null)
     binding.progressBar.run {
       speed = animationData.speed
       scale = animationData.scale
@@ -241,7 +239,7 @@ class ErrorMessage : ConstraintLayout {
 
     binding.progressBar.visibility = View.VISIBLE
 
-    val dimensionPixelSize = resources.getDimensionPixelSize(R.dimen.wh_loading)
+    val dimensionPixelSize = resources.getDimensionPixelSize(R.dimen.em_wh_loading)
     binding.progressBar.layoutParams.width = dimensionPixelSize
     binding.progressBar.layoutParams.height = dimensionPixelSize
     val constraintSet = ConstraintSet()
@@ -259,7 +257,7 @@ class ErrorMessage : ConstraintLayout {
     return this
   }
 
-  private fun showListLoading(animationData: AnimationData = AnimationData(raw.skeleton_frame_loading, 12.0f, .8f, 0x36000000)): ErrorMessage {
+  private fun showListLoading(animationData: AnimationData = AnimationData(R.raw.em_skeleton_frame_loading, 12.0f, .8f, 0x36000000)): ErrorMessage {
     visibility = View.VISIBLE
     binding.progressBar.run {
       speed = animationData.speed
@@ -325,7 +323,7 @@ class ErrorMessage : ConstraintLayout {
   ) {
 
     companion object {
-      fun loading(animationData: AnimationData = AnimationData(raw.loading, 12.0f, .8f, 0x36000000)): State {
+      fun loading(animationData: AnimationData = AnimationData(R.raw.em_loading, 12.0f, .8f, 0x36000000)): State {
         return State(
           LOADING,
           animationData = animationData,

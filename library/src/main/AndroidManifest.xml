@@ -1,2 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mojtaba_shafaei.androidErrorMessage" />
+    package="com.mojtaba_shafaei.android.error_message"
+    />
